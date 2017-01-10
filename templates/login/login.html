@@ -1,0 +1,17 @@
+<div class="panel-heading"><h3 class="panel-title"><strong>Login</strong></h3></div>
+<div class="panel-body">
+    {{ text }}
+    <form role="form" novalidate>
+        <div class="form-group">
+            <label for="email">Username or Email</label>
+            <input type="email" class="form-control" name="email" id="email" ng-model="loginCtrl.loginData.email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password <a href="#/forgot">(Forgot Password)</a></label>
+            <input type="password" class="form-control" name="pwd" id="pwd" ng-model="loginCtrl.loginData.pwd" placeholder="Password">
+        </div>
+        <button type="submit" ng-click="loginCtrl.login()" class="btn btn-success">Login</button>
+    </form>
+    <hr>
+    <p class='text-center'>&copy; 2016 <a href="https://amolwankhede.com" target="_blank">Amol Wankhede</a></p>
+</div>

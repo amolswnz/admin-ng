@@ -1,0 +1,13 @@
+<div class="panel-heading"><h3 class="panel-title"><strong>Forgot</strong></h3></div>
+<div class="panel-body">
+    <form role="form" novalidate>
+        <div class="form-group">
+            <label for="emailId">Username or Email</label>
+            <input type="email" class="form-control" name="emailId" id="emailId" ng-model="loginCtrl.loginData.emailId" placeholder="Enter email">
+        </div>
+        <button type="submit" ng-click="loginCtrl.forgot()" class="btn btn-success">Forgot Password</button>
+        <a href="javascript:history.back()" class="btn btn-default">Go Back</a>
+    </form>
+    <hr>
+    <p class='text-center'>&copy; 2016 <a href="https://amolwankhede.com" target="_blank">Amol Wankhede</a></p>
+</div>
