@@ -13,8 +13,10 @@
                 } else if(response.inactive) {
                     toastr.info(response.inactive, "Inactive Account");
                 } else if(response.active) {
-                    var redirectPath = $window.location.origin + $window.location.pathname + "dashboard.html";
-                    // toastr.success("You will be redirected to admin page in 5 seconds.", "Success!!");
+                    var redirectPath = 
+                            $window.location.origin
+                            + $window.location.pathname.substring(0, $window.location.pathname.lastIndexOf("/"))
+                            + "/dashboard.html";
                     $window.location.href = redirectPath;
                 }
             });        

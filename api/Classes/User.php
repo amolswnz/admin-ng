@@ -120,6 +120,15 @@ class User {
         return $stmt->fetchAll();
     }
 
+    public function getStatuss() 
+    {
+        $sql = "SELECT status FROM " . USERS_TABLE . " GROUP BY status";
+        $stmt = $this->pdo->prepare($sql);
+       
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     private function hashPassword($pwd) {
         $hashedPwd = hash('sha256', $pwd . HASH_SALT);
         return $hashedPwd;

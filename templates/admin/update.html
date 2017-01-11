@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <h3>View All Users</h3>
+    <h3>Update User</h3>
     <div class="form-inline text-right" role="form">  
         <div class="form-group">
             <div class="btn-group">
@@ -12,18 +12,11 @@
     <table class="table table-condensed table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th class='th-sort-link' ng-click="sortBy = ''; sortOrder = !sortOrder"> 
-                #
-                </th>
+                <th class='th-sort-link' ng-click="sortBy = ''; sortOrder = !sortOrder"> # </th>
                 <th class='th-sort-link' ng-click="sortBy = 'fullName'; sortOrder = !sortOrder">
                     Full Name
                     <span ng-show="sortBy == 'fullName' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
                     <span ng-show="sortBy == 'fullName' && sortOrder" class="fa fa-sort-alpha-desc"></span>
-                </th>
-                <th class='th-sort-link' ng-click="sortBy = 'email'; sortOrder = !sortOrder">
-                    Email
-                    <span ng-show="sortBy == 'email' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
-                    <span ng-show="sortBy == 'email' && sortOrder" class="fa fa-sort-alpha-desc"></span>
                 </th>
                 <th class='th-sort-link' ng-click="sortBy = 'role'; sortOrder = !sortOrder">
                     Role
@@ -35,10 +28,8 @@
                     <span ng-show="sortBy == 'status' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
                     <span ng-show="sortBy == 'status' && sortOrder" class="fa fa-sort-alpha-desc"></span>
                 </th>
-                <th class='th-sort-link' ng-click="sortBy = 'createdAt'; sortOrder = !sortOrder">
-                    Created at
-                    <span ng-show="sortBy == 'createdAt' && !sortOrder" class="fa fa-sort-numeric-asc"></span>
-                    <span ng-show="sortBy == 'createdAt' && sortOrder" class="fa fa-sort-numeric-desc"></span>
+                <th>
+                    Action
                 </th>
             </tr>
         </thead>
@@ -46,10 +37,11 @@
             <tr dir-paginate="user in userCtrl.users | filter:userCtrl.searchText | orderBy: sortBy:sortOrder | itemsPerPage: pageSize track by $index" current-page="currentPage">
                 <td> {{ ($index + 1) + (currentPage - 1) * pageSize }} </td>
                 <td><a ng-href="#/view/{{user.id}}"> {{ user.fullName }} </a> </td>
-                <td> {{ user.email }}</td>
                 <td><span ng-class="userCtrl.roleClass(user.role)"> {{ user.role }}</span></td>
                 <td ng-class="userCtrl.statusClass(user.status)"> {{ user.status }}</td>
-                <td> {{ user.createdAt | dateToISO  | date:'dd-MMM-yyyy'}} at {{ user.createdAt | dateToISO  | date:' HH:mm'}} </td>
+                <td> 
+                    <a class="btn btn-info" href="#/update/{{user.id}}" role="button">Update user</a>
+                </td>
             </tr>
         </tbody>
     </table>

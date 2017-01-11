@@ -1,0 +1,15 @@
+<div class="col-md-12">
+    <h2>User Details</h2>
+    <hr>
+    <div class="row row-eq-height">
+        <img ng-src="{{ userCtrl.user.avatar }}" class="col-md-4 col-md-offset-2 img-reponsive">
+        <ul class="list-group col-md-4">
+            <li class="list-group-item"><h4> {{ userCtrl.user.fullName }}</h4></li>
+            <li class="list-group-item"><em>Email:</em> {{ userCtrl.user.email }}</li>
+            <li class="list-group-item"><em>Username:</em> {{ userCtrl.user.username }}</li>
+            <li class="list-group-item"><em>Role:</em> {{ userCtrl.user.role }}</li>
+            <li class="list-group-item"><em>Status:</em> {{ userCtrl.user.status }}</li>
+            <li class="list-group-item"><button class="btn btn-danger" ng-click="userCtrl.deleteUser(userCtrl.user.id)" role="button">Delete user</button></li>
+        </ul>
+    </div>
+</div>

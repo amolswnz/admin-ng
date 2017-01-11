@@ -1,1 +1,52 @@
-deele
+<div class="col-md-12">
+    <h3>Delete User</h3>
+    <div class="form-inline text-right" role="form">  
+        <div class="form-group">
+            <div class="btn-group">
+                <input id="searchinput" type="search" ng-model="userCtrl.searchText" class="form-control" placeholder="Search ...">
+                <span id="searchclear" class="fa fa-close" ng-click="userCtrl.clearSearch()"></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <table class="table table-condensed table-hover table-striped table-bordered">
+        <thead>
+            <tr>
+                <th class='th-sort-link' ng-click="sortBy = ''; sortOrder = !sortOrder"> # </th>
+                <th class='th-sort-link' ng-click="sortBy = 'fullName'; sortOrder = !sortOrder">
+                    Full Name
+                    <span ng-show="sortBy == 'fullName' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
+                    <span ng-show="sortBy == 'fullName' && sortOrder" class="fa fa-sort-alpha-desc"></span>
+                </th>
+                <th class='th-sort-link' ng-click="sortBy = 'role'; sortOrder = !sortOrder">
+                    Role
+                    <span ng-show="sortBy == 'role' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
+                    <span ng-show="sortBy == 'role' && sortOrder" class="fa fa-sort-alpha-desc"></span>
+                </th>
+                <th class='th-sort-link' ng-click="sortBy = 'status'; sortOrder = !sortOrder">
+                    Status
+                    <span ng-show="sortBy == 'status' && !sortOrder" class="fa fa-sort-alpha-asc"></span>
+                    <span ng-show="sortBy == 'status' && sortOrder" class="fa fa-sort-alpha-desc"></span>
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="user in userCtrl.users | filter:userCtrl.searchText | orderBy: sortBy:sortOrder | itemsPerPage: pageSize track by $index" current-page="currentPage">
+                <td> {{ ($index + 1) + (currentPage - 1) * pageSize }} </td>
+                <td><a ng-href="#/view/{{user.id}}"> {{ user.fullName }} </a> </td>
+                <td><span ng-class="userCtrl.roleClass(user.role)"> {{ user.role }}</span></td>
+                <td ng-class="userCtrl.statusClass(user.status)"> {{ user.status }}</td>
+                <td> 
+                    <span ng-if="user.status != 'Deleted'">
+                        <a class="btn btn-danger" href="#/delete/{{user.id}}" role="button">Delete user</a>
+                    </span>
+                    <span ng-if="user.status == 'Deleted'">Already Deleted </span> 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <dir-pagination-controls></dir-pagination-controls>
+</div>
