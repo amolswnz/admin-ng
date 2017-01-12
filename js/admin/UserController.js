@@ -71,7 +71,7 @@
                 else {
                     toastr.error(response.critical, "Critical");
                 }
-                // toastr.info("You will be redirected in 5 seconds.", "Information", { onHidden: function() {  $window.history.back(); }});
+                toastr.info("You will be redirected in 5 seconds.", "Information", { onHidden: function() {  $window.history.back(); }});
             });
         }
         

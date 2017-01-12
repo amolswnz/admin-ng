@@ -1,14 +1,23 @@
+#current work
+user profile 
+update validation
+
+
+
 #Improvements
 Role manager will be added in my next Laravel AngularJS Application
 Created by and updated by
 Add new status and role
 use ui bootstrap
+RESTful services
 
-bug fix
+
+bug fix for already deleted users
     the view can have two filter one from text field and another one deleted
 
 #Known Bug
 Role and Status has-error class not applied when 
+if no roles or status in database error will occur
 
 
 #Credits
