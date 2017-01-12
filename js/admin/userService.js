@@ -42,6 +42,14 @@
                         }).then(successFn, errorFn);
             };
 
+            var addUser = function(userData) {
+                return $http({
+                            method: 'POST',
+                            url: baseUrl + 'addUser.php',
+                            data: userData
+                        }).then(successFn, errorFn);
+            };
+
             var successFn = function(response) {
                 return response.data;
             }
@@ -56,6 +64,7 @@
                 deleteUser: deleteUser, 
                 getOptions: getOptions, 
                 updateUser: updateUser, 
+                addUser: addUser
             };
         });
 }());

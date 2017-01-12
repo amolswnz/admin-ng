@@ -4,58 +4,100 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
             <ul class="list-unstyled">
-                <li><strong> {{ userCtrl.user.fullName }}</strong></li>
-                <li><em>Email:</em> {{ userCtrl.user.email }}</li>
-                <li><em>Username:</em> {{ userCtrl.user.username }}</li>
-                <li><em>Role:</em> {{ userCtrl.user.role }}</li>
-                <li><em>Status:</em> {{ userCtrl.user.status }}</li>
+                <li><strong> {{ userCtrl.newUser.fullName }}</strong></li>
+                <li><em>Email:</em> {{ userCtrl.newUser.email }}</li>
+                <li><em>Username:</em> {{ userCtrl.newUser.username }}</li>
+                <li><em>Role:</em> {{ userCtrl.newUser.role }}</li>
+                <li><em>Status:</em> {{ userCtrl.newUser.status }}</li>
             </ul>
-            <img ng-src="{{ ::userCtrl.user.avatar }}" class="img-reponsive">
         </div>
-        <form name="updateForm" class="form-horizontal col-md-6" role="form">
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Full Name:</label>
+        <form name="addUserForm" class="form-horizontal col-md-6" ng-submit="userCtrl.addUser()" novalidate>
+            <!-- <div class="form-group" ng-class="{ 'has-error': addUserForm.fullName.$invalid && !addUserForm.fullName.$pristine }"> -->
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.fullName.$touched && addUserForm.fullName.$invalid }">
+                <label for="input" class="col-sm-2 control-label">Full Name *</label>
                 <div class="col-sm-10">
-                    <input type="text" name="fullName" class="form-control" ng-model="userCtrl.user.fullName">
+                    <input type="text" name="fullName" class="form-control" 
+                                ng-model="userCtrl.newUser.fullName" ng-minlength="5" ng-maxlength="20" required>
+                    <div class="help-block" ng-messages="addUserForm.fullName.$error" ng-show="addUserForm.fullName.$touched">
+                        <span ng-message="minlength">The name is too short.</span>
+                        <span ng-message="maxlength">The name is too long.</span>
+                        <span ng-message="required">Please enter full name.</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Email:</label>
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.email.$invalid && !addUserForm.email.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Email *</label>
                 <div class="col-sm-10">
-                    <input type="text" name="email" class="form-control" ng-model="userCtrl.user.email">
+                    <input type="email" name="email" class="form-control" 
+                                ng-model="userCtrl.newUser.email" ng-minlength="6" required>
+                    <div class="help-block" ng-messages="addUserForm.email.$error" ng-if="addUserForm.email.$touched">
+                        <span ng-message="required">Please enter email.</span>
+                        <span ng-message="minlength">The email is too short.</span>
+                        <span ng-message="email">The email address is invalid.</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Username:</label>
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.username.$invalid && !addUserForm.username.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Username</label>
                 <div class="col-sm-10">
-                    <input type="text" name="username" class="form-control" ng-model="userCtrl.user.username">
+                    <input type="text" name="username" class="form-control" 
+                                ng-model="userCtrl.newUser.username" ng-minlength="5" ng-maxlength="12">
+                    <div class="help-block" ng-messages="addUserForm.username.$error" ng-show="addUserForm.username.$touched">
+                        <span ng-message="minlength">The username is too short.</span>
+                        <span ng-message="maxlength">The username is too long.</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Avatar:</label>
-                <div class="col-sm-10">
-                    <input type="text" name="avatar" class="form-control" ng-model="userCtrl.user.avatar">
+           
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.pwd.$invalid && !addUserForm.pwd.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Password *</label>
+                    <div class="btn-group col-sm-10">
+                        <input type="{{ userCtrl.pwdType }}" name="pwd" class="form-control"
+                                   ng-model="userCtrl.newUser.pwd" ng-minlength="8" ng-required>
+                        <span id="show-{{userCtrl.pwdType}}" class="fa fa-eye" ng-click="userCtrl.showPwd()"></span>
+                    <div class="help-block" ng-messages="addUserForm.pwd.$error" ng-show="addUserForm.pwd.$touched">
+                        <span ng-message="required">Please enter password.</span>
+                        <span ng-message="minlength">The password should be atleast 8 characters long.</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Role:</label>
+
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.avatar.$invalid && !addUserForm.avatar.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Avatar</label>
                 <div class="col-sm-10">
-                    <select name="role" class="form-control" ng-model="userCtrl.user.role">
+                    <input type="url" name="avatar" class="form-control" ng-model="userCtrl.newUser.avatar">
+                    <div class="help-block" ng-messages="addUserForm.avatar.$error" ng-show="addUserForm.avatar.$touched">
+                        <span ng-message="url">Please enter valid url.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.role.$invalid && !addUserForm.role.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Role *</label>
+                <div class="col-sm-10">
+                    <select name="role" class="form-control" ng-model="userCtrl.newUser.role" required>
+                        <option value="">-- Select user role --</option>
                         <option ng-repeat="option in userCtrl.roles">{{ option.role }}</option>
                     </select>
+                    <div class="help-block" ng-messages="addUserForm.role.$error" ng-show="addUserForm.role.$touched">
+                        <span ng-message="required">Please select user role.</span>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="input" class="col-sm-2 control-label">Status:</label>
+            <div class="form-group" ng-class="{ 'has-error': addUserForm.status.$invalid && !addUserForm.status.$pristine }">
+                <label for="input" class="col-sm-2 control-label">Status *</label>
                 <div class="col-sm-10">
-                    <select name="status" class="form-control" ng-model="userCtrl.user.status">
+                    <select name="status" class="form-control" ng-model="userCtrl.newUser.status" required >
+                        <option value="">-- Select user status --</option>
                         <option ng-repeat="option in userCtrl.statuss">{{ option.status }}</option>
                     </select>
+                    <div class="help-block" ng-messages="addUserForm.status.$error" ng-show="addUserForm.status.$touched">
+                        <span ng-message="required">Please select user status.</span>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">
-                    <button ng-click="userCtrl.addForm()" class="btn btn-primary">Submit</button>
+                    <button type="submit" ng-disabled="addUserForm.$invalid" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>

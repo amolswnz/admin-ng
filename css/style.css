@@ -28,3 +28,27 @@ body {
   display: -ms-flexbox;
   display: flex;
 }
+
+#show-password {
+    position: absolute;
+    right: 55px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+#show-text {
+    position: absolute;
+    right: 55px;
+    top: 0;
+    bottom: 0;
+    height: 14px;
+    margin: auto;
+    font-size: 18px;
+    cursor: pointer;
+    color: #000;
+}

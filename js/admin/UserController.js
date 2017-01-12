@@ -57,8 +57,8 @@
             });
         }
 
-        vm.addForm = function() {
-            userService.addUser(vm.user).then(function(response) {
+        vm.addUser = function() {
+            userService.addUser(vm.newUser).then(function(response) {
                 checkAuthAccess(response);
                 toastr.options = {
                             "preventDuplicates": true,
@@ -71,7 +71,7 @@
                 else {
                     toastr.error(response.critical, "Critical");
                 }
-                toastr.info("You will be redirected in 5 seconds.", "Information", { onHidden: function() {  $window.history.back(); }});
+                // toastr.info("You will be redirected in 5 seconds.", "Information", { onHidden: function() {  $window.history.back(); }});
             });
         }
         
@@ -124,6 +124,15 @@
                 toastr.info("You will be redirected to login page in 5 seconds.", "Information", { onHidden: function() { $window.location.href = redirectPath; }});
                 return ;
             }
+        }
+
+        /* Password field show hide function */
+        vm.pwdType = "password";
+        vm.showPwd = function() {
+            if(vm.pwdType === "password")
+                vm.pwdType = "text"; 
+            else
+                vm.pwdType = "password";
         }
     }
 }());

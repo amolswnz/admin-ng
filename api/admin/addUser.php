@@ -11,9 +11,11 @@
         die();
     }
 
+    $request['createdBy'] = $session->id;       // Add session id to request 
+
     $user = new User();
-    $result = $user->addUser($request, $request['id']);
+    $result = $user->addUser($request);
     if($result)
-        echo json_encode(array("success"=> "The user details has been updated."));
+        echo json_encode(array("success"=> "The user details has been added to database."));
     else
-        echo json_encode(array("critical"=> "The user details cannot be updated in database."));
+        echo json_encode(array("critical"=> "The user details cannot be added in database."));
