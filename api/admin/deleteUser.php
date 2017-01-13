@@ -13,6 +13,6 @@
 
     $users = new User();
     if($users->deleteUser($request))
-        echo json_encode(array("success"=> "The user has been deleteed from database."));
+        echo json_encode(array("success"=> "The user has been deleted from database."));
     else
         echo json_encode(array("critical"=> "The user details cannot be found in database."));
