@@ -12,12 +12,14 @@ use ui bootstrap
 RESTful services
 
 
+
 bug fix for already deleted users
     the view can have two filter one from text field and another one deleted
 
 #Known Bug
 Role and Status has-error class not applied when 
 if no roles or status in database error will occur
+Menu will show same name even if changed in updated profile
 
 
 #Credits
@@ -33,5 +35,7 @@ if no roles or status in database error will occur
 [dirPagination](https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination) is a Boostrap based Pagination Directive.
 
 [Angular Loading Bar](https://chieffancypants.github.io/angular-loading-bar/) is an automatic loading bar using angular interceptors.
+
+[Bootstrap components](https://angular-ui.github.io/bootstrap/) written in pure AngularJS by the AngularUI Team
 
 [Font Awesome](http://fontawesome.io/) gives you scalable vector icons that can instantly be customized

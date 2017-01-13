@@ -20,13 +20,8 @@
                 };
                 if (response.success) {
                     toastr.success(response.success, "Success");
-                    toastr.info("You will be redirected in 5 seconds.", "Information", {
-                        onHidden: function() {
-                            $window.history.back();
-                        }
-                    });
                 } else if (response.error) {
-                    toastr.error(response.error, "Unauthorised Access");
+                    toastr.error(response.error, "Critical Error");
                     var redirectPath =
                         $window.location.origin +
                         $window.location.pathname.substring(0, $window.location.pathname.lastIndexOf("/")) +
@@ -36,15 +31,21 @@
                             $window.location.href = redirectPath;
                         }
                     });
-                } else if (response.pwdError) {
-                    toastr.warning(response.pwdError, "Password Error !");
+                } else if (reponse.pwdError) {
+                    toastr.danger(response.pwdError, "Password Error !");
                 } else {
                     toastr.error(response.critical, "Critical");
                 }
+                toastr.info("You will be redirected in 5 seconds.", "Information", {
+                    onHidden: function() {
+                        $window.history.back();
+                    }
+                });
             });
         }
 
-        /* Modal Window - modal window always needs to be in $scope */
+
+        /* Modal Window */
         $scope.modalPopup = function() {
             modal = $uibModal.open({
                                     templateUrl: 'templates/profile/pwdModal.html',
@@ -55,32 +56,35 @@
             return modal.result
         };
 
-        /* Function which triggers modal window opening */
+
         vm.checkPwd = function() {
-            $scope.modalPopup()
-                .then(function(data) { $scope.handleSuccess(data); })
-                .then(null, function(reason) {  $scope.handleDismiss(reason); });
+            $scope.modalPopup();
+
+                .then(function(data) { $scope.handleSuccess(data);
+                })
+                .then(null, function(reason) {
+                    $scope.handleDismiss(reason);
+                });
         };
 
-        /* Submit button is cliked on modal window - modal action perform */
-        $scope.updateProfile = function() {
-            $scope.modalInstance.close('Update profile clicked')
+        $scope.yes = function() {
+            $scope.modalInstance.close('Yes Button Clicked')
         };
 
-        /* Cancel button is cliked or backdrop is clicked on modal window - modal dismissed */
-        $scope.updateCancel = function() {
-            $scope.modalInstance.dismiss('Cancel update Clicked')
+        $scope.no = function() {
+            $scope.modalInstance.dismiss('No Button Clicked')
         };
 
-        /* Monitors the modal window close event - After closing the modal the required actions can be carried out */
         $scope.handleSuccess = function(data) {
-            console.log('Modal closed: ' + data);
-            vm.updateProfile();
+            console.info('Modal closed: ' + data);
         };
 
-        /* Monitors the dismissal of modal window - After dismissing the modal */
         $scope.handleDismiss = function(reason) {
-            console.log('Modal dismissed: ' + reason);
+            console.info('Modal dismissed: ' + reason);
         }
+
+
+
+
     }
 }());

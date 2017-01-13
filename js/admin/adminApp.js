@@ -1,6 +1,9 @@
 (function() {
     var app = angular.module("adminManagerMain", 
-                ['ngRoute', 'angularUtils.directives.dirPagination', 'angular-loading-bar', 'ngMessages']);
+                [   'ngRoute', 
+                    'angularUtils.directives.dirPagination', 'angular-loading-bar',
+                    'ngMessages', 'ui.bootstrap'
+                ]);
 
     app.config(function($locationProvider, $routeProvider) {
 
@@ -45,21 +48,16 @@
                 controller: 'UserController',
                 controllerAs: 'userCtrl'
             })
-            // .when('/profile', {
-            //     templateUrl: 'templates/profile/profile.html',
-            //     controller: 'ProfileController',
-            //     controllerAs: 'profileCtrl'
-            // })
-            // .when('/setting', {
-            //     templateUrl: 'templates/profile/setting.html',
-            //     controller: 'ProfileController',
-            //     controllerAs: 'profileCtrl'
-            // })
-            // .when('/logout', {
-            //     templateUrl: 'templates/profile/logout.html',
-            //     controller: 'ProfileController',
-            //     controllerAs: 'profileCtrl'
-            // })            
+            .when('/profile', {
+                templateUrl: 'templates/profile/profile.html',
+                controller: 'ProfileController',
+                controllerAs: 'profileCtrl'
+            })
+            .when('/settings', {
+                templateUrl: 'templates/profile/settings.html',
+                controller: 'ProfileController',
+                controllerAs: 'profileCtrl'
+            })
             .otherwise({
                 redirectTo: '/home'
             });

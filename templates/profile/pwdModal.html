@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3 class="modal-title">Update profile confirmation</h3>
+</div>
+<div class="modal-body">
+    <h4>For security reasone, please enter you existing password</h4>
+    <form class="form-horizontal" role="form">
+       <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-2">
+                <input type="password" ng-model="profileCtrl.securityPwd" class="form-control">
+            </div>
+        </div> 
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="updateProfile()">Submit</button>
+    <button class="btn btn-default" ng-click="updateCancel()">Cancel</button>
+</div>

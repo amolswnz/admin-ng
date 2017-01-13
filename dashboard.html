@@ -14,8 +14,8 @@
     
     <link rel="stylesheet" type="text/css" href="cdn/bootstrap.min.css">
 </head>
-<body>
-<nav class="navbar navbar-default" ng-app="menuApp">
+<body ng-app="adminManagerMain">
+<nav class="navbar navbar-default">
     <div class="container-fluid" ng-controller="MenuController as userMenu">
         <div class="navbar-header"> <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="#" class="navbar-brand">AM</a> </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -26,12 +26,12 @@
                 <li> <a href="#/view"><i class="fa fa-list-ol"></i> View Users</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kia ora, {{ userMenu.user.name }} <i class="fa fa-user-circle" aria-hidden="true"></i>  <span class="caret"></span> </a>
-                    <ul class="dropdown-menu">
-                        <li> <a href="#!/profile"> <i class="fa fa-vcard-o" aria-hidden="true"></i> Profile </a> </li>
-                        <li> <a href="#!/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings </a> </li>
-                        <li> <a href="#!/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a> </li>
+                <li uib-dropdown on-toggle="toggled(open)">
+                    <a href id="simple-dropdown" uib-dropdown-toggle> Kia ora, {{ userMenu.user.name }} <i class="fa fa-user-circle" aria-hidden="true"></i><span class="caret"></span> </a>
+                    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                        <li> <a href="#/profile"> <i class="fa fa-vcard-o" aria-hidden="true"></i> Profile </a> </li>
+                        <li> <a href="#/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings </a> </li>
+                        <li> <a href="" ng-click="userMenu.logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout </a> </li>
                     </ul>
                 </li>
             </ul>
@@ -39,7 +39,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row" ng-app="adminManagerMain">
+    <div class="row">
         <div ng-view></div>
     </div>
     <hr>
@@ -56,7 +56,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-messages.min.js"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script> -->
+<script src="js/lib/ui-bootstrap-tpls-2.4.0.min.js"></script>
 <!-- 
 <script src="cdn/jquery-3.1.1.min.js"></script>
 <script src="cdn/angular.min.js"></script>
@@ -64,14 +64,15 @@
 <script src="cdn/bootstrap.min.js"></script> -->
 
 <script src="js/admin/adminApp.js"></script>
-<script src="js/admin/menuApp.js"></script>
 <script src="js/lib/loading-bar.min"></script>
 
 <script src="js/admin/userService.js"></script>
+<script src="js/admin/profileService.js"></script>
 
+<script src="js/admin/MenuController.js"></script>
 <script src="js/admin/HomeController.js"></script>
 <script src="js/admin/UserController.js"></script>
-<!-- <script src="js/admin/ProfileController.js"></script> -->
+<script src="js/admin/ProfileController.js"></script>
 
 <!-- Directives -->
 <script src="js/directives/dirPagination.js"></script>

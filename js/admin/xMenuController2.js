@@ -1,14 +1,14 @@
 (function() {
 
     angular
-        .module("menuApp", [])
-        .service('sessionService', Session)
+        .module("adminManagerMain")
+        .service('sessionService', GetSession)
         .controller("MenuController", ['sessionService', MenuController])
         
         ;
 
-    function Session($http) {
-        var baseUrl = "api/admin/";
+    function GetSession($http) {
+        var baseUrl = "api/admin/profile/";
 
         var getSession = function() {
             return $http({
@@ -36,6 +36,8 @@
         sessionService.getSession().then(function(response) {
             vm.user = response; 
         });
+
+        
     }   
 
 }());

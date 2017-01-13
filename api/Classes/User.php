@@ -42,12 +42,23 @@ class User {
         return $stmt->fetch();
     }
 
+    public function checkPwd($id, $pwd)
+    {
+        $sql = "SELECT * FROM " . USERS_TABLE . " WHERE id = ? AND pwd = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $id);
+        $stmt->bindValue(2, $this->hashPassword($pwd));
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function addUser($userData)
     {
         /* Check for duplicate email address */
-        $sql = "SELECT * FROM " . USERS_TABLE . " WHERE email = ?";
+        $sql = "SELECT * FROM " . USERS_TABLE . " WHERE email = ? OR username = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $userData['email']);
+        $stmt->bindValue(2, $userData['username']);
         $stmt->execute();
         if($stmt->fetch())  
             return null;
@@ -70,10 +81,22 @@ class User {
 
     public function updateUser($userData, $id)
     {
+        /* Check for duplicate email address */
+        $sql = "SELECT * FROM " . USERS_TABLE . " WHERE email = ? OR username = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $userData['email']);
+        $stmt->bindValue(2, $userData['username']);
+        $stmt->execute();
+        if($stmt->fetch())  
+            return null;
+
+        /** Remove id from the userData array if present 
+            otherwise it will be inserted in UPDATE SQL Query **/
         if(isset($userData['id']))
             unset($userData['id']);                             
-            /** Remove id from the userData array if present 
-                otherwise it will be inserted in UPDATE SQL Query **/
+        /** If password UPDATE is requested */
+        if(isset($userData['pwd']))
+            $userData['pwd'] = $this->hashPassword($userData['pwd']);
 
         $setValues = Database::setValues($userData);             // Build query string
 
