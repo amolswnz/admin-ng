@@ -45,6 +45,21 @@
                 controller: 'UserController',
                 controllerAs: 'userCtrl'
             })
+            // .when('/profile', {
+            //     templateUrl: 'templates/profile/profile.html',
+            //     controller: 'ProfileController',
+            //     controllerAs: 'profileCtrl'
+            // })
+            // .when('/setting', {
+            //     templateUrl: 'templates/profile/setting.html',
+            //     controller: 'ProfileController',
+            //     controllerAs: 'profileCtrl'
+            // })
+            // .when('/logout', {
+            //     templateUrl: 'templates/profile/logout.html',
+            //     controller: 'ProfileController',
+            //     controllerAs: 'profileCtrl'
+            // })            
             .otherwise({
                 redirectTo: '/home'
             });
@@ -54,29 +69,10 @@
         Root Scope defines main functions and variables used in controllers
         Only one place if we want to change any of the default behaviour 
     */
-   
     app.run(function($rootScope) {
         /* Required for pagination directive */
         $rootScope.currentPage = 1;
-        $rootScope.pageSize = 10;    
+        $rootScope.pageSize = 10;
     });
 
-
-    angular.module('adminManagerMain.directives', [])
-        .directive('pwCheck', [function() {
-            return {
-                require: 'ngModel',
-                link: function(scope, elem, attrs, ctrl) {
-                    var firstPassword = '#' + attrs.pwCheck;
-                    console.log(firstPassword);
-                    elem.add(firstPassword).on('keyup', function() {
-                        scope.$apply(function() {
-                            var v = elem.val() === $(firstPassword).val();
-                            console.log(v);
-                            ctrl.$setValidity('pwmatch', v);
-                        });
-                    });
-                }
-            }
-        }]);
 }());
