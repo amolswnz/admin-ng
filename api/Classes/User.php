@@ -152,6 +152,35 @@ class User {
         return $stmt->fetchAll();
     }
 
+    public function getStatistics() {
+        $sql = "SELECT role, COUNT(role) as total FROM " . USERS_TABLE . " GROUP BY role";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $role = $stmt->fetchAll();     
+         
+        $sql = "SELECT status, COUNT(status) as total FROM am_users GROUP BY status";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $status = $stmt->fetchAll();     
+
+        $sql = "SELECT COUNT(id) AS total FROM am_users WHERE DATE(createdAt) > (NOW() - INTERVAL 7 DAY)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $newUsers = $stmt->fetch();     
+
+        $sql = "SELECT COUNT(id) AS total FROM am_users";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $total = $stmt->fetch();
+
+        $results = array();
+        $results['role'] = $role;
+        $results['status'] = $status;
+        $results['newUsers'] = $newUsers;
+        $results['totalUsers'] = $total;
+        return $results;
+    }
+
     private function hashPassword($pwd) {
         $hashedPwd = hash('sha256', $pwd . HASH_SALT);
         return $hashedPwd;

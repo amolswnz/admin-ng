@@ -11,7 +11,7 @@
             .when('/home', {
                 templateUrl: 'templates/admin/home.html',
                 controller: 'HomeController',
-                controllerAs: 'userCtrl'
+                controllerAs: 'homeCtrl'
             })
             .when('/add', {
                 templateUrl: 'templates/admin/add.html',

@@ -1,3 +1,41 @@
 <div class="col-md-12">
     <h2>Administrator Manager</h2>
+    <hr>
+    <div class="alert alert-danger" role="alert" ng-show="homeCtrl.error">
+        <h4>Error Fetching Data</h4>
+        <p>{{ homeCtrl.error }} </p>
+    </div>
+    <div class="row row-eq-height">
+        <div class="col-md-2 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">User Roles</h2>
+                </div>
+                <div class="panel-body">
+                    <h5 ng-repeat="role in homeCtrl.role">{{ role.role }} -  {{ role.total }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">User Status</h2>
+                </div>
+                <div class="panel-body">
+                    <h5 ng-repeat="status in homeCtrl.status">{{ status.status }} - {{ status.total }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Users Statistics</h2>
+                </div>
+                <div class="panel-body">
+                    <h5>Total Users - {{ homeCtrl.totalUsers }}</h5>
+                    <h5>New Users - {{ homeCtrl.newUsers }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
