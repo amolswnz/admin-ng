@@ -1,26 +1,41 @@
-#current work
-user profile 
-update validation
+##Administrator Manager
+For managining the website content, most of the web based applications have backend Control Panel / Dashboard / Adminstrator account.
+The Admin Panel is used to CRUD website content. This Admin Panel can have one or more users.
 
+**Administrator Manager** is an Angular JS based PHP/MySQL application which is used to *Create - Read - Update - Delete* Admin panel users.  
 
+[Live Demo](http://git.amolwankhede.com/admin-ng)
 
-#Improvements
-Role manager will be added in my next Laravel AngularJS Application
-Created by and updated by
-Add new status and role
-use ui bootstrap
-RESTful services
+####Built using Angular JS and PHP/MySQL
 
+**Features**
 
+0. Administrator Login
+0. Forget Password
+0. Admin User Statistics
+0. Add User
+0. Update User
+0. Delete User
+0. View All Users
+0. View each User details
+0. View Profile 
+0. Update Profile
+0. Logout
 
-bug fix for already deleted users
-    the view can have two filter one from text field and another one deleted
+**Further Improvements**
 
-#Known Bug
-Role and Status has-error class not applied when 
-if no roles or status in database error will occur
-Menu will show same name even if changed in updated profile
+* RESTful services
+* Singleton Pattern
+* Role manager - Laravel AngularJS Application
+* Add new Status and Role
+* Restrict Page access based on user Role
+* Material Design
+* Update validation
 
+**Known Bug**
+* Email, Role, Status `has-error` class not applied when the input is touched 
+* If there are no Roles or Status in database, add user error will occur - a fix for this will be add new Role and Status as select option
+* Menu will show same name even if the name changed in updated profile.
 
 #Credits
 

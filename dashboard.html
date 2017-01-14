@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body ng-app="adminManagerMain">
 <nav class="navbar navbar-default">
@@ -49,31 +49,30 @@
         </div>
     </div>
 </div>
+<!-- Required libraries -->
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular-route.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-messages.min.js"></script>
 <script src="js/lib/ui-bootstrap-tpls-2.4.0.min.js"></script>
-
-<script src="js/admin/adminApp.js"></script>
+<!-- Other libraries -->
+<script src="js/lib/toastr.min.js"></script>
 <script src="js/lib/loading-bar.min"></script>
-
-<script src="js/admin/userService.js"></script>
-<script src="js/admin/profileService.js"></script>
-<script src="js/admin/homeService.js"></script>
-
-<script src="js/admin/MenuController.js"></script>
-<script src="js/admin/HomeController.js"></script>
-<script src="js/admin/UserController.js"></script>
-<script src="js/admin/ProfileController.js"></script>
-
+<!-- Main Application -->
+<script src="js/admin/adminApp.js"></script>
+<!-- Services -->
+<script src="js/admin/service/userService.js"></script>
+<script src="js/admin/service/profileService.js"></script>
+<script src="js/admin/service/homeService.js"></script>
+<!-- Controllers -->
+<script src="js/admin/controller/MenuController.js"></script>
+<script src="js/admin/controller/HomeController.js"></script>
+<script src="js/admin/controller/UserController.js"></script>
+<script src="js/admin/controller/ProfileController.js"></script>
 <!-- Directives -->
 <script src="js/directives/dirPagination.js"></script>
 <!-- Filters -->
-<script src='js/admin/filters.js'></script>
-
-<!-- Other libraries -->
-<script src="js/lib/toastr.min.js"></script>
+<script src='js/admin/filter/filters.js'></script>
 </body>
 </html>
