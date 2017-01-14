@@ -54,3 +54,5 @@ The Admin Panel is used to CRUD website content. This Admin Panel can have one o
 [Bootstrap components](https://angular-ui.github.io/bootstrap/) written in pure AngularJS by the AngularUI Team
 
 [Font Awesome](http://fontawesome.io/) gives you scalable vector icons that can instantly be customized
+
+[Mockaroo](https://www.mockaroo.com/) allows you to quickly and easily to download large amounts of randomly generated test data based on your own specs
