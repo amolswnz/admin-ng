@@ -25,8 +25,8 @@
         unset($request['userData']['newPwd']);
     }
 
-
     $result = $user->updateUser($request['userData'], $session->id);
+
     if($result)
         echo json_encode(array("success"=> "The user details has been updated."));
     else

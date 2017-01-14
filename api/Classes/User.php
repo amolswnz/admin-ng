@@ -82,13 +82,16 @@ class User {
     public function updateUser($userData, $id)
     {
         /* Check for duplicate email address */
-        $sql = "SELECT * FROM " . USERS_TABLE . " WHERE email = ? OR username = ?";
+       /* $sql = "SELECT * FROM " . USERS_TABLE . " WHERE email = ? OR username = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(1, $userData['email']);
         $stmt->bindValue(2, $userData['username']);
         $stmt->execute();
         if($stmt->fetch())  
-            return null;
+            return null;*/
+
+    unset($userData['email']);
+    unset($userData['username']);
 
         /** Remove id from the userData array if present 
             otherwise it will be inserted in UPDATE SQL Query **/

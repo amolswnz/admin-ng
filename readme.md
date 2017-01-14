@@ -4,7 +4,7 @@ The Admin Panel is used to CRUD website content. This Admin Panel can have one o
 
 **Administrator Manager** is an Angular JS based PHP/MySQL application which is used to *Create - Read - Update - Delete* Admin panel users.  
 
-[Live Demo](http://git.amolwankhede.com/admin-ng)
+[Live Demo](http://git.amolwankhede.com/admin-ng) -> Username `hello@amolwankhede.com` Password `github`
 
 ####Built using Angular JS and PHP/MySQL
 
@@ -17,6 +17,9 @@ The Admin Panel is used to CRUD website content. This Admin Panel can have one o
 0. Update User
 0. Delete User
 0. View All Users
+ 0. Filter User list
+ 0. Sort by clicking table heading
+ 0. Pagination
 0. View each User details
 0. View Profile 
 0. Update Profile
@@ -36,12 +39,14 @@ The Admin Panel is used to CRUD website content. This Admin Panel can have one o
 * Email, Role, Status `has-error` class not applied when the input is touched 
 * If there are no Roles or Status in database, add user error will occur - a fix for this will be add new Role and Status as select option
 * Menu will show same name even if the name changed in updated profile.
+* Profile update - Duplicate email or username check not done
+* Login only using email (not using username) 
 
 #Credits
 
 [Bootstrap](http://getbootstrap.com/) is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
 
-[AngularJS](https://angularjs.org/) — Superheroic JavaScript MVW Framework
+[AngularJS](https://angularjs.org/) — Superheroic JavaScript MVW Framework.
 
 [jQuery](https://jquery.com/) The Write Less, Do More, JavaScript Library.
 
@@ -51,8 +56,8 @@ The Admin Panel is used to CRUD website content. This Admin Panel can have one o
 
 [Angular Loading Bar](https://chieffancypants.github.io/angular-loading-bar/) is an automatic loading bar using angular interceptors.
 
-[Bootstrap components](https://angular-ui.github.io/bootstrap/) written in pure AngularJS by the AngularUI Team
+[Bootstrap components](https://angular-ui.github.io/bootstrap/) written in pure AngularJS by the AngularUI Team.
 
-[Font Awesome](http://fontawesome.io/) gives you scalable vector icons that can instantly be customized
+[Font Awesome](http://fontawesome.io/) gives you scalable vector icons that can instantly be customized.
 
-[Mockaroo](https://www.mockaroo.com/) allows you to quickly and easily to download large amounts of randomly generated test data based on your own specs
+[Mockaroo](https://www.mockaroo.com/) allows you to quickly and easily to download large amounts of randomly generated test data based on your own specs.

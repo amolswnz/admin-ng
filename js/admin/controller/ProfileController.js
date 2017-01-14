@@ -10,8 +10,7 @@
             vm.user = response;
         });
 
-        vm.updateProfile = function() {
-            console.log(vm.securityPwd);
+        vm.updateProfileAction = function() {
             profileService.updateProfile(vm.user, vm.securityPwd).then(function(response) {
                 toastr.options = {
                     "preventDuplicates": true,
@@ -74,13 +73,13 @@
 
         /* Monitors the modal window close event - After closing the modal the required actions can be carried out */
         $scope.handleSuccess = function(data) {
-            console.log('Modal closed: ' + data);
-            vm.updateProfile();
+            // console.log('Modal closed: ' + data);
+            vm.updateProfileAction();
         };
 
         /* Monitors the dismissal of modal window - After dismissing the modal */
         $scope.handleDismiss = function(reason) {
-            console.log('Modal dismissed: ' + reason);
+            // console.log('Modal dismissed: ' + reason);
         }
     }
 }());
